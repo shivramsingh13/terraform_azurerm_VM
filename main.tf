@@ -26,15 +26,13 @@ resource "azurerm_network_interface" "nic-1" {
     name = var.nic_name
     resouce_group_name = azurerm_resource_group.rg-1.name
     location = azrerm_resource_group.rg-1.location
-
-}
-
-ip_configuration {
+  
+  ip_configuration {
     name = "internal"
     subnet_id = azurerm_subnet.subnet-1.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.public_ip.id
-        
+    public_ip_address_id = azurerm_public_ip.public_ip.id        
+}
 }
 
 resource "azurerm_virtual_machine" "vm-1" {
@@ -66,7 +64,7 @@ resource "azurerm_virtual_machine" "vm-1" {
 
     }
     }
-resourece "azurerm_managed_disk" "disk-2" {
+resource "azurerm_managed_disk" "disk-2" {
     name = var.data_disk_name
     resource_group_name = azurerm_resource_group.rg-1.name
     location = azurerm_resource_group.rg-1.location
