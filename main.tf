@@ -13,6 +13,7 @@ resource "azurerm_subnet" "subnet-1" {
     name = var.subnet_name
     address_prefixes = ["10.0.1.0/24"]
     virtual_network_name = azurerm_virtual_network.vnet-1.name
+    resource_group_name = azurerm_resource_group.rg-1.name
   }
 
 resource "azurerm_public_ip" "public_ip" {
