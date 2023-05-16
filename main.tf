@@ -33,7 +33,7 @@ ip_configuration {
     name = "internal"
     subnet_id = azurerm_subnet.subnet-1.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.public_ip.subnet_id
+    public_ip_address_id = azurerm_public_ip.public_ip.id
         
 }
 
@@ -72,12 +72,12 @@ resourece "azurerm_managed_disk" "disk-2" {
     location = azurerm_resource_group.rg-1.location
     storage_account_type = "Standard_LRS"
     create_option = "Empty"
-    disk_size_gb = "30"
+    disk_size_gb = 30
 }
 
-resource "azurerm_virtual_machine_data_attachment" "disk-2" {
-    managed_disk_id = azurerm_managed_disk.disk-2.subnet_id
+resource "azurerm_virtual_machine_data_disk_attachment" "disk-2" {
+    managed_disk_id = azurerm_managed_disk.disk-2.id
     virtual_machine_id = azurerm_virtual_machine.vm-1.id
-    lun = "10"
+    lun = 10
     caching = "ReadWrite"
 }
