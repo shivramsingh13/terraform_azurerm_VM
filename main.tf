@@ -20,7 +20,7 @@ resource "azurerm_public_ip" "public_ip" {
   name = var.public_name
   resource_group_name = azurerm_resource_group.rg-1.name
   location = azurerm_resource_group.rg-1.location
-  allocation_method = "Dyanamic"
+  allocation_method = "Dynamic"
 }
 
 resource "azurerm_network_interface" "nic-1" {
@@ -41,16 +41,16 @@ resource "azurerm_virtual_machine" "vm-1" {
     resource_group_name = azurerm_resource_group.rg-1.name
     location = azurerm_resource_group.rg-1.location
     vm_size = "Standard_F2"
-    network_interface_ides = [azurerm_network_interface.nic-1.id]
+    network_interface_ids = [azurerm_network_interface.nic-1.id]
     os_profile {
         computer_name = "hostname"
-        admin_user = "adminuser"
+        admin_username = "adminuser"
         admin_password = "shiv@1234567"
     }
     os_profile_windows_config {
 
     }
-    Storage_os_disk {
+    storage_os_disk {
         name = var.os_disk_name
         caching = "ReadWrite"
         create_option = "FromImage"
