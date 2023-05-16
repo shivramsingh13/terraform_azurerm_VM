@@ -26,7 +26,7 @@ resource "azurerm_public_ip" "public_ip" {
 resource "azurerm_network_interface" "nic-1" {
     name = var.nic_name
     resouce_group_name = azurerm_resource_group.rg-1.name
-    location = azrerm_resource_group.rg-1.location
+    location = azurerm_resource_group.rg-1.location
   
   ip_configuration {
     name = "internal"
