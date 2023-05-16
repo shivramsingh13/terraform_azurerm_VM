@@ -38,7 +38,7 @@ resource "azurerm_network_interface" "nic-1" {
 resource "azurerm_virtual_machine" "vm-1" {
     name = var.vm_name
     resource_group_name = azurerm_resource_group.rg-1.name
-    location = resource_group_name.rg-1.location
+    location = azurerm_resource_group.rg-1.location
     vm_size = "Standard_F2"
     network_interface_ides = [azurerm_network_interface.nic-1.id]
     os_profile {
